@@ -166,8 +166,6 @@ impl_from_str!(
 
 impl<Pk: MiniscriptKey> ForEachKey<Pk> for Bare<Pk> {
     fn for_each_key<'a, F: FnMut(&'a Pk) -> bool>(&'a self, pred: F) -> bool
-    where
-        Pk: 'a,
     {
         self.ms.for_each_key(pred)
     }
@@ -328,8 +326,6 @@ impl_from_str!(
 
 impl<Pk: MiniscriptKey> ForEachKey<Pk> for Pkh<Pk> {
     fn for_each_key<'a, F: FnMut(&'a Pk) -> bool>(&'a self, mut pred: F) -> bool
-    where
-        Pk: 'a,
     {
         pred(&self.pk)
     }
